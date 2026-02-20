@@ -51,7 +51,7 @@ class Game(AssetManager):
         sound_points_path = "audio/points.wav"
 
         # Sounds from https://quicksounds.com/library/sounds/homer
-        sound_doh_path = "audio/Homer-Doh! - QuickSounds.com.mp3"
+        sound_doh_path = "audio/Homer-Doh! - QuickSounds.com.mp3a"
         sound_woohoo_path = "audio/WOOHOO! (homer) - QuickSounds.com.mp3"
 
         # Pandemia by MaxKoMusic | https://maxkomusic.com/
@@ -60,29 +60,10 @@ class Game(AssetManager):
         # https://creativecommons.org/licenses/by-sa/3.0/
         music_path = "audio/Pandemia(chosic.com).mp3"
 
-        try:
-            self.sound_killed = pygame.mixer.Sound(sound_killed_path)
-        except FileNotFoundError:
-            self.sound_killed = None
-            super().print_file_missing_error(sound_killed_path)
-
-        try:
-            self.sound_points = pygame.mixer.Sound(sound_points_path)
-        except FileNotFoundError:
-            self.sound_points = None
-            super().print_file_missing_error(sound_points_path)
-
-        try:
-            self.sound_doh = pygame.mixer.Sound(sound_doh_path)
-        except FileNotFoundError:
-            self.sound_doh = None
-            super().print_file_missing_error(sound_doh_path)
-
-        try:
-            self.sound_woohoo = pygame.mixer.Sound(sound_woohoo_path)
-        except FileNotFoundError:
-            self.sound_woohoo = None
-            super().print_file_missing_error(sound_woohoo_path)
+        self.sound_killed = self.load_sound(sound_killed_path)
+        self.sound_points = self.load_sound(sound_points_path)
+        self.sound_doh = self.load_sound(sound_doh_path)
+        self.sound_woohoo = self.load_sound(sound_woohoo_path)
 
         try:
             pygame.mixer.music.load(music_path)
@@ -90,6 +71,15 @@ class Game(AssetManager):
         except pygame.error:
             self.music = False
             super().print_file_missing_error(music_path)
+
+    def load_sound(self, sound_path):
+        try:
+            sound = pygame.mixer.Sound(sound_path)
+        except FileNotFoundError:
+            sound = None
+            super().print_file_missing_error(sound_path)
+
+        return sound
 
     def check_game_started(self):
         """Démarre la partie lorsque la touche Entrée est pressée."""
