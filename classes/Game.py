@@ -51,7 +51,7 @@ class Game(AssetManager):
         sound_points_path = "audio/points.wav"
 
         # Sounds from https://quicksounds.com/library/sounds/homer
-        sound_doh_path = "audio/Homer-Doh! - QuickSounds.com.mp3a"
+        sound_doh_path = "audio/Homer-Doh! - QuickSounds.com.mp3"
         sound_woohoo_path = "audio/WOOHOO! (homer) - QuickSounds.com.mp3"
 
         # Pandemia by MaxKoMusic | https://maxkomusic.com/
