@@ -73,6 +73,15 @@ class Game(AssetManager):
             super().print_file_missing_error(music_path)
 
     def load_sound(self, sound_path):
+        """Charge un fichier contenant un effet sonore.
+
+        Args:
+            sound_path (str): Emplacement du fichier.
+
+        Returns:
+            pygame.mixer.Sound | None: Le son chargé ou None
+                si le fichier est manquant.
+        """
         try:
             sound = pygame.mixer.Sound(sound_path)
         except FileNotFoundError:
