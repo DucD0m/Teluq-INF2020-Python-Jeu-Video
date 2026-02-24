@@ -26,7 +26,6 @@ def side_obstacles_positions(spacing, alignment, width, rows, dx, nb):
 
     Génère une liste de coordonnées pour les obstacles situés à gauche
     et à droite de la piste, répartis sur plusieurs rangées.
-    Fonction déclarative et fonctionnelle.
 
     Args:
         spacing (int): Espacement horizontal et vertical entre obstacles.
